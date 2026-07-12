@@ -28,88 +28,153 @@ async function uploadVideo(){
     return new Promise((resolve, reject)=>{
 
 
-        const formData = new FormData();
+        const chunkSize = 5 * 1024 * 1024; // 5 MB chunks
 
-        formData.append("file", file);
+        let start = 0;
 
-        formData.append("upload_preset", uploadPreset);
-
-
-
-        const xhr = new XMLHttpRequest();
-
-
-        xhr.open(
-            "POST",
-            `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`
-        );
+        let uploadId = null;
 
 
 
-        // Upload percentage
-        xhr.upload.onprogress = function(event){
+        function uploadChunk(){
 
 
-            if(event.lengthComputable){
+            const chunk = file.slice(
+                start,
+                start + chunkSize
+            );
 
 
-                let percent = Math.round(
-                    (event.loaded / event.total) * 100
+            const xhr = new XMLHttpRequest();
+
+
+
+            xhr.open(
+                "POST",
+                `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`
+            );
+
+
+
+            xhr.setRequestHeader(
+                "X-Unique-Upload-Id",
+                uploadId || crypto.randomUUID()
+            );
+
+
+
+            xhr.setRequestHeader(
+                "Content-Range",
+                `bytes ${start}-${start + chunk.size - 1}/${file.size}`
+            );
+
+
+
+            const formData = new FormData();
+
+            formData.append(
+                "file",
+                chunk
+            );
+
+            formData.append(
+                "upload_preset",
+                uploadPreset
+            );
+
+
+
+            xhr.upload.onprogress = function(event){
+
+
+                if(event.lengthComputable){
+
+
+                    let uploaded =
+                    start + event.loaded;
+
+
+                    let percent =
+                    Math.round(
+                        (uploaded / file.size) * 100
+                    );
+
+
+                    status.innerHTML =
+                    `Uploading video... ${percent}%`;
+
+                }
+
+            };
+
+
+
+            xhr.onload = function(){
+
+
+                if(xhr.status === 200){
+
+
+                    const data =
+                    JSON.parse(xhr.responseText);
+
+
+                    resolve(data.secure_url);
+
+
+                }
+
+
+                else if(xhr.status === 308){
+
+
+                    start += chunk.size;
+
+                    uploadChunk();
+
+
+                }
+
+
+                else{
+
+
+                    status.innerHTML =
+                    "Upload failed ❌";
+
+                    reject(xhr.responseText);
+
+                }
+
+            };
+
+
+
+            xhr.onerror = function(){
+
+
+                status.innerHTML =
+                "Connection lost, retrying...";
+
+
+                setTimeout(
+                    uploadChunk,
+                    3000
                 );
 
 
-                status.innerHTML =
-                `Uploading video... ${percent}%`;
-
-            }
-
-        };
+            };
 
 
 
-        xhr.onload = function(){
+            xhr.send(formData);
 
 
-            if(xhr.status === 200){
-
-
-                const data = JSON.parse(xhr.responseText);
-
-
-                status.innerHTML =
-                "Upload completed ✅";
-
-
-                resolve(data.secure_url);
-
-
-            } else {
-
-
-                status.innerHTML =
-                "Upload failed ❌";
-
-
-                reject(xhr.responseText);
-
-            }
-
-        };
+        }
 
 
 
-        xhr.onerror = function(){
-
-            status.innerHTML =
-            "Network error ❌";
-
-            reject("Network error");
-
-        };
-
-
-
-        xhr.send(formData);
+        uploadChunk();
 
 
     });
