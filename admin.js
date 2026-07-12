@@ -8,9 +8,6 @@ import {
     doc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-const cloudName = "liqcadtf";
-const uploadPreset = "mulltibox_uploads";
-
 
 async function uploadVideo(){
 
@@ -196,7 +193,7 @@ async function addMovie(){
 
         image: document.getElementById("movieImage").value,
 
-        videoUrl: await uploadVideo(),
+        videoUrl: document.getElementById("videoUrl").value,
 
         desc: document.getElementById("movieDesc").value,
 
