@@ -14,47 +14,105 @@ const uploadPreset = "mulltibox_uploads";
 
 async function uploadVideo(){
 
-    const file =
-    document.getElementById("videoFile").files[0];
-
+    const file = document.getElementById("videoFile").files[0];
 
     if(!file){
-
-        alert("Select a video first");
+        alert("Please select a video");
         return null;
-
     }
 
 
-    document.getElementById("uploadStatus").innerHTML =
-    "Uploading video...";
+    const status = document.getElementById("uploadStatus");
 
 
-    const formData = new FormData();
-
-    formData.append("file", file);
-
-    formData.append("upload_preset", uploadPreset);
+    return new Promise((resolve, reject)=>{
 
 
+        const formData = new FormData();
 
-    const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`,
-        {
-            method:"POST",
-            body:formData
-        }
-    );
+        formData.append("file", file);
+
+        formData.append("upload_preset", uploadPreset);
 
 
-    const data = await response.json();
+
+        const xhr = new XMLHttpRequest();
 
 
-    document.getElementById("uploadStatus").innerHTML =
-    "Upload complete";
+        xhr.open(
+            "POST",
+            `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`
+        );
 
 
-    return data.secure_url;
+
+        // Upload percentage
+        xhr.upload.onprogress = function(event){
+
+
+            if(event.lengthComputable){
+
+
+                let percent = Math.round(
+                    (event.loaded / event.total) * 100
+                );
+
+
+                status.innerHTML =
+                `Uploading video... ${percent}%`;
+
+            }
+
+        };
+
+
+
+        xhr.onload = function(){
+
+
+            if(xhr.status === 200){
+
+
+                const data = JSON.parse(xhr.responseText);
+
+
+                status.innerHTML =
+                "Upload completed ✅";
+
+
+                resolve(data.secure_url);
+
+
+            } else {
+
+
+                status.innerHTML =
+                "Upload failed ❌";
+
+
+                reject(xhr.responseText);
+
+            }
+
+        };
+
+
+
+        xhr.onerror = function(){
+
+            status.innerHTML =
+            "Network error ❌";
+
+            reject("Network error");
+
+        };
+
+
+
+        xhr.send(formData);
+
+
+    });
 
 }
 // ADD MOVIE
