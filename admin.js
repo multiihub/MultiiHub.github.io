@@ -22,97 +22,34 @@ async function uploadVideo(){
     }
 
 
-    const status = document.getElementById("uploadStatus");
+    document.getElementById("uploadStatus").innerHTML =
+    "Uploading video...";
 
 
-    return new Promise((resolve, reject)=>{
+    const formData = new FormData();
+
+    formData.append("file", file);
+
+    formData.append("upload_preset", uploadPreset);
 
 
-        const formData = new FormData();
-
-        formData.append("file", file);
-
-        formData.append("upload_preset", uploadPreset);
-
-
-
-        const xhr = new XMLHttpRequest();
+    const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`,
+        {
+            method:"POST",
+            body:formData
+        }
+    );
 
 
-        xhr.open(
-            "POST",
-            `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`
-        );
+    const data = await response.json();
 
 
-
-        // Upload percentage
-        xhr.upload.onprogress = function(event){
-
-
-            if(event.lengthComputable){
+    document.getElementById("uploadStatus").innerHTML =
+    "Upload completed";
 
 
-                let percent = Math.round(
-                    (event.loaded / event.total) * 100
-                );
-
-
-                status.innerHTML =
-                `Uploading video... ${percent}%`;
-
-            }
-
-        };
-
-
-
-        xhr.onload = function(){
-
-
-            if(xhr.status === 200){
-
-
-                const data = JSON.parse(xhr.responseText);
-
-
-                status.innerHTML =
-                "Upload completed ✅";
-
-
-                resolve(data.secure_url);
-
-
-            } else {
-
-
-                status.innerHTML =
-                "Upload failed ❌";
-
-
-                reject(xhr.responseText);
-
-            }
-
-        };
-
-
-
-        xhr.onerror = function(){
-
-            status.innerHTML =
-            "Network error ❌";
-
-            reject("Network error");
-
-        };
-
-
-
-        xhr.send(formData);
-
-
-    });
+    return data.secure_url;
 
 }
 // ADD MOVIE
