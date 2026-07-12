@@ -8,6 +8,9 @@ import {
     doc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
+const cloudName = "liqcadtf";
+const uploadPreset = "mulltibox_uploads";
+
 
 async function uploadVideo(){
 
