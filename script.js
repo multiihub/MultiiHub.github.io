@@ -10,7 +10,6 @@ console.log("Mulltibox JS connected");
 // Clear all containers
 document.getElementById("movies-container").innerHTML = "";
 document.getElementById("series-container").innerHTML = "";
-document.getElementById("anime-container").innerHTML = "";
 document.getElementById("trending-container").innerHTML = "";
 document.getElementById("recommended-container").innerHTML = "";
 
@@ -81,10 +80,6 @@ async function loadMovies() {
 
             case "Series":
                 container = document.getElementById("series-container");
-                break;
-
-            case "Anime":
-                container = document.getElementById("anime-container");
                 break;
 
             case "Trending":
