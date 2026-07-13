@@ -40,9 +40,17 @@ function createCard(movie, id) {
 
                 <p>${movie.genre}</p>
 
-                <a href="movie.html?id=${id}" class="watch-btn">
-                 Watch Now
-                </a>
+                <a href="${
+(movie.category === "Series" || movie.category === "Anime")
+?
+"series-details.html?id="+id
+:
+"movie.html?id="+id
+}" class="watch-btn">
+
+Watch Now
+
+</a>
 
             </div>
 
