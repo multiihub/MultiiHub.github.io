@@ -48,17 +48,17 @@ Manage Movies • Series • Anime • Episodes
   
 
 <button onclick="showSection('trendingSection')">
-🔥 Trending
+🔥 Series
 </button>
   
 
 <button onclick="showSection('recommendedSection')">
-⭐ Recommended
+⭐ Top anime/series
 </button>
 
 
 <button onclick="showSection('seriesSection')">
-📺 Series
+📺 Anime
 </button>
 
 
@@ -136,35 +136,39 @@ placeholder="Movie Description">
 
 <div class="admin-section" id="trendingSection">
 
-<h2>🔥 Add Trending Card</h2>
+<h2>🔥 Add Series</h2>
 
 
-<input id="trendingTitle" placeholder="Movie / Anime Title">
+<input id="seriesTitle"
+placeholder="Series Name">
 
 
-<input id="trendingGenre" placeholder="Genre">
+
+<input id="seriesGenre"
+placeholder="Genre">
 
 
-<input id="trendingYear" placeholder="Release Year">
+
+<input id="seriesYear"
+placeholder="Release Year">
 
 
-<input id="trendingImage" placeholder="Poster Image URL">
+
+<input id="seriesImage"
+placeholder="Series Poster URL">
 
 
-<textarea id="trendingDesc" placeholder="Description"></textarea>
+
+<textarea id="seriesDesc"
+placeholder="Series Description">
+</textarea>
 
 
-<input type="file" id="trendingVideo" accept="video/mp4">
 
-
-<p id="trendingUploadStatus"></p>
-
-
-<button onclick="addTrending()">
-
-Add Trending
-
+<button onclick="addSeries()">
+➕ Create Series Parent
 </button>
+
 
 
 </div>
@@ -179,36 +183,40 @@ Add Trending
 <div class="admin-section" id="recommendedSection">
 
 
-<h2>⭐ Add Recommended Card</h2>
+<h2>⭐ Add top anime/series</h2>
 
 
 
-<input id="recommendedTitle" placeholder="Movie / Anime Title">
+<input id="seriesTitle"
+placeholder="Series Name">
 
 
-<input id="recommendedGenre" placeholder="Genre">
+
+<input id="seriesGenre"
+placeholder="Genre">
 
 
-<input id="recommendedYear" placeholder="Release Year">
+
+<input id="seriesYear"
+placeholder="Release Year">
 
 
-<input id="recommendedImage" placeholder="Poster Image URL">
+
+<input id="seriesImage"
+placeholder="Series Poster URL">
 
 
-<textarea id="recommendedDesc" placeholder="Description"></textarea>
+
+<textarea id="seriesDesc"
+placeholder="Series Description">
+</textarea>
 
 
-<input type="file" id="recommendedVideo" accept="video/mp4">
 
-
-<p id="recommendedUploadStatus"></p>
-
-
-<button onclick="addRecommended()">
-
-Add Recommended
-
+<button onclick="addSeries()">
+➕ Create Top A/S Parent
 </button>
+
 
 
 </div>
@@ -223,7 +231,7 @@ Add Recommended
 
 
 <h2>
-📺 Add Series
+📺 Add Anime
 </h2>
 
 
@@ -255,7 +263,7 @@ placeholder="Series Description">
 
 
 <button onclick="addSeries()">
-➕ Create Series Parent
+➕ Create Anime Parent
 </button>
 
 
