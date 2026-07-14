@@ -558,26 +558,17 @@ showMovies();
 
 
 
+window.addMovie = addMovie;
 
+window.addSeries = addSeries;
 
+window.addTop = addTop;
 
+window.addAnime = addAnime;
 
+window.addEpisode = addEpisode;
 
-window.addMovie=addMovie;
-
-window.addTrending = addTrending;
-
-window.addRecommended = addRecommended;
-
-window.addSeries=addSeries;
-
-window.addTop=addTop;
-
-window.addAnime=addAnime;
-
-window.addEpisode=addEpisode;
-
-window.deleteMovie=deleteMovie;
+window.deleteMovie = deleteMovie;
 
 
 
