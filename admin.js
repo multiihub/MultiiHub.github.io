@@ -208,61 +208,43 @@ alert(
 
 
 
-
 async function addTop(){
 
-
-let series={
-
+let top={
 
 title:
-document.getElementById("seriesTitle").value,
-
+document.getElementById("topTitle").value,
 
 genre:
-document.getElementById("seriesGenre").value,
-
+document.getElementById("topGenre").value,
 
 year:
-document.getElementById("seriesYear").value,
-
+document.getElementById("topYear").value,
 
 image:
-document.getElementById("seriesImage").value,
-
+document.getElementById("topImage").value,
 
 desc:
-document.getElementById("seriesDesc").value,
-
+document.getElementById("topDesc").value,
 
 category:"Top",
-
 
 rating:"8.5",
 
 quality:"HD"
 
-
 };
 
 
-
-
-let ref =
-await addDoc(
-
+let ref = await addDoc(
 collection(db,"movies"),
-
-series
-
+top
 );
-
 
 
 alert(
-"Series Created ID:\n"+ref.id
+"Top Added ID:\n"+ref.id
 );
-
 
 }
 
@@ -343,65 +325,43 @@ showMovies();
 
 
 
-// ============================
-// ADD SERIES
-// ============================
-
-
 async function addAnime(){
 
-
-
-let series={
-
+let anime={
 
 title:
-document.getElementById("seriesTitle").value,
-
+document.getElementById("animeTitle").value,
 
 genre:
-document.getElementById("seriesGenre").value,
-
+document.getElementById("animeGenre").value,
 
 year:
-document.getElementById("seriesYear").value,
-
+document.getElementById("animeyear").value,
 
 image:
-document.getElementById("seriesImage").value,
-
+document.getElementById("animeImage").value,
 
 desc:
-document.getElementById("seriesDesc").value,
-
+document.getElementById("animeDesc").value,
 
 category:"Anime",
-
 
 rating:"8.5",
 
 quality:"HD"
 
-
 };
-
-
-
 
 
 let ref =
 await addDoc(
-
 collection(db,"movies"),
-
-series
-
+anime
 );
 
 
-
 alert(
-"Series Created ID:\n"+ref.id
+"Anime Created ID:\n"+ref.id
 );
 
 
@@ -610,6 +570,10 @@ window.addTrending = addTrending;
 window.addRecommended = addRecommended;
 
 window.addSeries=addSeries;
+
+window.addTop=addTop;
+
+window.addAnime=addAnime;
 
 window.addEpisode=addEpisode;
 
