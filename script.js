@@ -10,9 +10,8 @@ console.log("Mulltibox JS connected");
 // Clear all containers
 document.getElementById("movies-container").innerHTML = "";
 document.getElementById("series-container").innerHTML = "";
-document.getElementById("trending-container").innerHTML = "";
-document.getElementById("recommended-container").innerHTML = "";
-
+document.getElementById("anime-container").innerHTML = "";
+document.getElementById("top-container").innerHTML = "";
 
 function createCard(movie, id) {
 
