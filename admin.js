@@ -148,7 +148,7 @@ async function uploadVideo(fileInput,statusID){
 }
 
 
-async function addTrending(){
+async function addSeries(){
 
 
 let series={
@@ -209,7 +209,7 @@ alert(
 
 
 
-async function addRecommended(){
+async function addTop(){
 
 
 let series={
@@ -235,7 +235,7 @@ desc:
 document.getElementById("seriesDesc").value,
 
 
-category:"Recommmended",
+category:"Top",
 
 
 rating:"8.5",
@@ -348,7 +348,7 @@ showMovies();
 // ============================
 
 
-async function addSeries(){
+async function addAnime(){
 
 
 
