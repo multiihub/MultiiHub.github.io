@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mullti | Choose Your Experience</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+
+body{
+
+    min-height:100vh;
+    background:
+    radial-gradient(circle at top left,#182848,transparent 40%),
+    radial-gradient(circle at bottom right,#4b0010,transparent 40%),
+    #050505;
+
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+
+/* Floating background lights */
+
+body::before{
+
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:#0066ff;
+    filter:blur(150px);
+    opacity:.25;
+    top:-100px;
+    left:-100px;
+}
+
+
+body::after{
+
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:#ff0033;
+    filter:blur(150px);
+    opacity:.25;
+    bottom:-100px;
+    right:-100px;
+}
+
+
+/* Main container */
+
+.container{
+
+    width:100%;
+    max-width:1100px;
+    padding:30px;
+    text-align:center;
+    z-index:2;
+
+}
+
+
+.logo{
+
+    font-size:55px;
+    letter-spacing:15px;
+    font-weight:800;
+    margin-bottom:15px;
+
+}
+
+
+.tagline{
+
+    font-size:18px;
+    color:#bbb;
+    margin-bottom:45px;
+
+}
+
+
+/* Cards area */
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:35px;
+
+}
+
+
+
+/* Common Card */
+
+.card{
+
+    padding:35px 25px;
+    border-radius:25px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transition:.4s;
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-12px);
+
+}
+
+
+/* MulltiHub */
+
+.hub:hover{
+
+    box-shadow:
+    0 0 30px #0066ff,
+    0 0 70px rgba(0,102,255,.5);
+
+}
+
+
+/* MulltiBox */
+
+.box:hover{
+
+    box-shadow:
+    0 0 30px #ff0033,
+    0 0 70px rgba(255,0,51,.5);
+
+}
+
+
+
+.icon{
+
+    font-size:45px;
+    margin-bottom:15px;
+
+}
+
+
+.card h2{
+
+    font-size:32px;
+    margin-bottom:10px;
+
+}
+
+
+.card p{
+
+    color:#ccc;
+    margin-bottom:25px;
+
+}
+
+
+.features{
+
+    list-style:none;
+    margin-bottom:30px;
+
+}
+
+
+.features li{
+
+    margin:8px;
+    color:#ddd;
+
+}
+
+
+
+/* Buttons */
+
+.btn{
+
+    display:inline-block;
+
+    padding:13px 35px;
+
+    border-radius:30px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+
+
+.hub .btn{
+
+    background:#0066ff;
+
+}
+
+
+.box .btn{
+
+    background:#ff0033;
+
+}
+
+
+
+.btn:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+
+
+footer{
+
+    margin-top:40px;
+    color:#777;
+    font-size:14px;
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+
+.container{
+
+    padding:15px;
+
+}
+
+
+.logo{
+
+    font-size:35px;
+    letter-spacing:8px;
+
+}
+
+
+.tagline{
+
+    font-size:13px;
+    margin-bottom:25px;
+
+}
+
+
+.cards{
+
+    gap:10px;
+
+}
+
+
+
+.card{
+
+    padding:20px 10px;
+    border-radius:18px;
+
+}
+
+
+.icon{
+
+    font-size:30px;
+
+}
+
+
+.card h2{
+
+    font-size:18px;
+
+}
+
+
+.card p{
+
+    font-size:12px;
+
+}
+
+
+.features li{
+
+    font-size:11px;
+    margin:5px 0;
+
+}
+
+
+
+.btn{
+
+    padding:10px 12px;
+    font-size:11px;
+
+}
+
+
+footer{
+
+    margin-top:20px;
+    font-size:11px;
+
+}
+
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<div class="container">
+
+
+<div class="logo">
+MULLTI
+</div>
+
+
+<div class="tagline">
+Choose Your Experience<br>
+One Platform. Two Powerful Worlds.
+</div>
+
+
+
+<div class="cards">
+
+
+
+<!-- MulltiHub -->
+
+<div class="card hub">
+
+
+<div class="icon">
+📚
+</div>
+
+
+<h2>
+MULLTIHUB
+</h2>
+
+
+<p>
+Learn • Grow • Earn
+</p>
+
+
+<ul class="features">
+
+<li>📖 Free Books</li>
+<li>🎓 Courses</li>
+<li>🤖 AI Assistant</li>
+
+</ul>
+
+
+
+<a href="themulltihub.html" class="btn">
+ENTER MULLTIHUB
+</a>
+
+
+
+</div>
+
+
+
+
+<!-- MulltiBox -->
+
+
+<div class="card box">
+
+
+<div class="icon">
+🎬
+</div>
+
+
+<h2>
+MULLTIBOX
+</h2>
+
+
+<p>
+Premium Entertainment
+</p>
+
+
+<ul class="features">
+
+<li>🎥 Movies</li>
+<li>🍿 Series</li>
+<li>🔥 Anime</li>
+
+</ul>
+
+
+<a href="themulltibox.html" class="btn">
+ENTER MULLTIBOX
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<footer>
+
+© 2026 Mullti Ecosystem
+
+</footer>
+
+
+
+</div>
+
+
+</body>
+
+</html>
