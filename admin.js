@@ -151,51 +151,61 @@ async function uploadVideo(fileInput,statusID){
 async function addTrending(){
 
 
-let data={
+async function addSeries(){
+
+
+
+let series={
+
 
 title:
-document.getElementById("trendingTitle").value,
+document.getElementById("seriesTitle").value,
+
 
 genre:
-document.getElementById("trendingGenre").value,
+document.getElementById("seriesGenre").value,
+
 
 year:
-document.getElementById("trendingYear").value,
+document.getElementById("seriesYear").value,
+
 
 image:
-document.getElementById("trendingImage").value,
+document.getElementById("seriesImage").value,
+
 
 desc:
-document.getElementById("trendingDesc").value,
+document.getElementById("seriesDesc").value,
 
 
-videoUrl:
-await uploadVideo(
-"trendingVideo",
-"trendingUploadStatus"
-),
+category:"Series",
 
-
-category:"Trending",
 
 rating:"8.5",
 
 quality:"HD"
 
+
 };
 
 
+
+
+
+let ref =
 await addDoc(
+
 collection(db,"movies"),
-data
+
+series
+
 );
 
 
-alert("Trending Added Successfully");
 
-showMovies();
-
-}
+alert(
+"Series Created ID:\n"+ref.id
+);
 
 
 
